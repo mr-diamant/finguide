@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-green: #43795E;
+  --color-brand-green-dark: #2D5240;
+  --color-brand-deep-dark: #1A2E24;
+  --color-brand-green-light: #5A9478;
+  --color-brand-gold: #C9A84C;
+  --color-brand-gold-light: #E8C96A;
+  --color-brand-gold-dark: #A07830;
+  --color-off-white: #F8F6F1;
+}
+
+@layer base {
+  body {
+    @apply bg-off-white text-brand-green-dark selection:bg-brand-gold/30 transition-colors duration-500;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  .dark body {
+    @apply bg-brand-deep-dark text-white/90;
+  }
+}
+
+@layer utilities {
+  .mesh-bg {
+    background: 
+      radial-gradient(circle at 20% 30%, var(--color-brand-green-dark) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, var(--color-brand-deep-dark) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, #a0783011 0%, transparent 50%);
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-[12px] border border-white/40 shadow-xl dark:bg-brand-green-dark/40 dark:border-white/5 dark:shadow-2xl/20;
+  }
+  .glass-dark {
+    @apply bg-brand-green-dark/80 backdrop-blur-[12px] border border-white/10 shadow-2xl dark:bg-brand-deep-dark/90;
+  }
+  .nav-glass {
+    @apply bg-off-white/80 backdrop-blur-[8px] border-b border-brand-green/10 dark:bg-brand-deep-dark/80 dark:border-white/5;
+  }
+  .accent-gradient {
+    @apply bg-linear-to-br from-brand-gold via-brand-gold-light to-brand-gold-dark bg-clip-text text-transparent;
+  }
+  .pill-button {
+    @apply bg-brand-green/5 border border-brand-green/20 backdrop-blur-md transition-all duration-300;
+  }
+  .pill-button:hover {
+    @apply bg-brand-green/10 border-brand-green/40;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
