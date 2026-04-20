@@ -88,7 +88,7 @@ export default function Services() {
           whileInView={{ opacity: 1, scale: 1 }}
           className="mt-20 p-px glass rounded-[40px] border-brand-green/10 dark:border-white/5 shadow-2xl/10"
         >
-          <div className="rounded-[40px] px-12 py-16 bg-white dark:bg-brand-green-dark flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left relative overflow-hidden group transition-colors duration-500">
+          <div className="rounded-[40px] p-8 md:px-12 md:py-16 bg-white dark:bg-brand-green-dark flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left relative overflow-hidden group transition-colors duration-500">
             <div className="relative z-10">
               <div className="text-3xl font-black mb-3 tracking-tight text-brand-green-dark dark:text-white">Нужна индивидуальная стратегия?</div>
               <p className="opacity-50 text-gray-500 dark:text-gray-400 font-medium">Запишитесь на бесплатную вводную встречу на 15 минут.</p>

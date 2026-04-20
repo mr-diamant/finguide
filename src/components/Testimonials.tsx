@@ -70,7 +70,7 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-10 rounded-[40px] border border-brand-green/5 relative group transition-all duration-500 shadow-sm hover:shadow-xl flex flex-col h-full"
+              className="bg-white p-8 md:p-10 rounded-[40px] border border-brand-green/5 relative group transition-all duration-500 shadow-sm hover:shadow-xl flex flex-col h-full"
             >
               <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Quote size={40} className="text-brand-green" />

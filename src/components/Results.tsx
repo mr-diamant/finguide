@@ -48,7 +48,7 @@ export default function Results() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-10 rounded-[40px] border border-brand-green/20 hover:border-brand-gold/50 transition-all group flex flex-col items-center text-center shadow-sm"
+              className="bg-white p-8 md:p-10 rounded-[40px] border border-brand-green/20 hover:border-brand-gold/50 transition-all group flex flex-col items-center text-center shadow-sm"
             >
               <div className="w-40 h-40 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
                 <img 

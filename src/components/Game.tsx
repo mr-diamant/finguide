@@ -19,8 +19,10 @@ export default function Game() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 dark:bg-brand-gold/10 blur-[120px] rounded-full -mr-48 -mt-48" />
           
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.15 }}
             className="text-center max-w-4xl relative z-10"
           >
             <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-gold mb-6">Трансформационная игра</div>
@@ -30,11 +32,11 @@ export default function Game() {
               <span className="accent-gradient italic text-brand-gold">Финансовая свобода</span>
             </h2>
 
-            <div className="w-full md:w-[480px] md:h-[480px] flex items-center justify-center mb-10">
+            <div className="w-full md:w-[480px] md:h-[480px] flex items-center justify-center mb-10 mx-auto">
               <img
                 src="https://finguide.kz/images/game.webp"
                 alt="Game Icon"
-                className="w-full h-auto object-contain mix-blend-multiply dark:rounded-[10px] dark:p-4"
+                className="w-full h-auto object-contain mix-blend-multiply rounded-[24px] dark:p-4"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -44,7 +46,13 @@ export default function Game() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
-              <div className="glass p-8 rounded-[32px] border-brand-green/5 dark:border-white/5 bg-white/50 dark:bg-white/5">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="glass p-8 rounded-[32px] border-brand-green/5 dark:border-white/5 bg-white/50 dark:bg-white/5"
+              >
                 <h3 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-3">
                   <Users size={16} /> Для кого
                 </h3>
@@ -56,9 +64,15 @@ export default function Game() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
-              <div className="glass p-8 rounded-[32px] border-brand-green/5 dark:border-white/5 bg-white/50 dark:bg-white/5">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="glass p-8 rounded-[32px] border-brand-green/5 dark:border-white/5 bg-white/50 dark:bg-white/5"
+              >
                 <h3 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-3">
                   <Brain size={16} /> Что вы получите
                 </h3>
@@ -68,7 +82,7 @@ export default function Game() {
                 <div className="flex items-center gap-2 text-brand-green dark:text-brand-gold text-[10px] font-black uppercase tracking-widest bg-brand-green/5 dark:bg-white/5 px-4 py-2 rounded-full w-fit">
                   <CheckCircle2 size={12} /> Результат за 1 вечер
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <button 

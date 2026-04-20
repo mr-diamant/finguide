@@ -12,16 +12,27 @@ export default function Hero() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/5 dark:bg-brand-green/20 rounded-full blur-[120px] -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-gold/5 dark:bg-brand-gold/15 rounded-full blur-[100px] -ml-64 -mb-64" />
 
+      {/* Background icon watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <img
+          src="https://finguide.kz/icon.svg"
+          alt=""
+          className="w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] object-contain opacity-[0.15] dark:opacity-[0.09]"
+          style={{ filter: 'brightness(0) saturate(0) invert(30%) sepia(20%) saturate(500%) hue-rotate(100deg)' }}
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 w-full text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="inline-flex items-center gap-2 px-4 py-2 bg-brand-green/5 dark:bg-white/5 rounded-full mb-8 border border-brand-green/10 dark:border-white/10"
         >
-          <img 
-            src="https://finguide.kz/page/brandbook/icon.png" 
-            alt="Icon" 
-            className="w-4 h-4 object-contain animate-pulse" 
+          <img
+            src="https://finguide.kz/icon.svg"
+            alt="Icon"
+            className="w-4 h-4 object-contain animate-pulse"
             referrerPolicy="no-referrer"
           />
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-green-dark/60 dark:text-white/40">

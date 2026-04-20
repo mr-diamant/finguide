@@ -68,7 +68,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             className="flex items-center justify-center lg:justify-end"
           >
-            <div className="glass-dark p-12 rounded-[48px] border border-white/10 shadow-2xl relative w-full max-w-md text-center">
+            <div className="glass-dark p-8 md:p-12 rounded-[48px] border border-white/10 shadow-2xl relative w-full max-w-md text-center">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 blur-[80px] rounded-full" />
               <h3 className="text-3xl font-black mb-6 tracking-tight">Запишитесь сейчас</h3>
               <p className="opacity-60 mb-10 text-sm leading-relaxed">

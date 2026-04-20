@@ -4,9 +4,13 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/src/lib/utils';
 import { useModal } from '../context/ModalContext';
 
+const LANGS = ['RU', 'KZ', 'EN'] as const;
+type Lang = typeof LANGS[number];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lang, setLang] = useState<Lang>('RU');
   const { openModal } = useModal();
 
   const handleConsultationClick = () => {
@@ -92,12 +96,48 @@ export default function Navbar() {
           >
             Консультация
           </motion.button>
+
+          {/* Desktop lang switcher */}
+          <div className="flex items-center gap-0.5 bg-brand-green/5 dark:bg-white/5 rounded-xl border border-brand-green/10 dark:border-white/10 p-1">
+            {LANGS.map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={cn(
+                  'text-[10px] font-black uppercase tracking-wider px-2.5 py-1.5 rounded-lg transition-all',
+                  lang === l
+                    ? 'bg-brand-gold text-brand-green-dark shadow-sm'
+                    : 'text-brand-green-dark/50 dark:text-white/40 hover:text-brand-green-dark dark:hover:text-white'
+                )}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Mobile Burger */}
-        <button className="md:hidden text-brand-green-dark dark:text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Mobile Burger + Lang */}
+        <div className="md:hidden flex items-center gap-3">
+          <div className="flex items-center gap-0.5 bg-brand-green/5 dark:bg-white/5 rounded-xl border border-brand-green/10 dark:border-white/10 p-1">
+            {LANGS.map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={cn(
+                  'text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-lg transition-all',
+                  lang === l
+                    ? 'bg-brand-gold text-brand-green-dark shadow-sm'
+                    : 'text-brand-green-dark/50 dark:text-white/40'
+                )}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+          <button className="text-brand-green-dark dark:text-white" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
