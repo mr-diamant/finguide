@@ -25,7 +25,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-24 px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
+    <section id="process" className="py-24 px-6 md:px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <motion.h2 

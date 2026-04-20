@@ -15,7 +15,7 @@ export default function Game() {
   return (
     <section id="game" className="py-24 px-6 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
-        <div className="glass p-12 md:p-20 rounded-[40px] relative overflow-hidden flex flex-col items-center border-brand-green/10 dark:border-white/5 dark:bg-brand-green-dark/20 shadow-none">
+        <div className="glass p-6 md:p-20 rounded-[40px] relative overflow-hidden flex flex-col items-center border-brand-green/10 dark:border-white/5 dark:bg-brand-green-dark/20 shadow-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 dark:bg-brand-gold/10 blur-[120px] rounded-full -mr-48 -mt-48" />
           
           <motion.div
@@ -30,7 +30,7 @@ export default function Game() {
               <span className="accent-gradient italic text-brand-gold">Финансовая свобода</span>
             </h2>
 
-            <div className="w-[calc(100%+6rem)] -mx-12 md:mx-auto md:w-[480px] md:h-[480px] flex items-center justify-center mb-10">
+            <div className="w-full md:w-[480px] md:h-[480px] flex items-center justify-center mb-10">
               <img
                 src="https://finguide.kz/images/game.webp"
                 alt="Game Icon"

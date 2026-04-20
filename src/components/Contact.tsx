@@ -5,7 +5,7 @@ import { useModal } from '../context/ModalContext';
 export default function Contact() {
   const { openModal } = useModal();
   return (
-    <section id="contact" className="py-32 px-10 relative overflow-hidden bg-brand-green-dark dark:bg-brand-deep-dark text-white transition-colors duration-500">
+    <section id="contact" className="py-32 px-6 md:px-10 relative overflow-hidden bg-brand-green-dark dark:bg-brand-deep-dark text-white transition-colors duration-500">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-gold/5 dark:bg-brand-gold/10 rounded-full blur-[120px] -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-green-light/10 rounded-full blur-[100px] -ml-64 -mb-64" />

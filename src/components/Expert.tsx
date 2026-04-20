@@ -15,14 +15,33 @@ export default function Expert() {
     'ПБ - Сертификат Профессионального Бухгалтера'
   ];
 
+  const Header = () => (
+    <>
+      <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-gold mb-6">Об эксперте</div>
+      <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-brand-green-dark dark:text-white leading-tight">
+        Айнур Рысмаганбетова
+      </h2>
+      <div className="text-brand-gold font-bold text-sm uppercase tracking-widest mb-2">
+        Профессиональный бухгалтер · Финансовый коуч · Налоговый эксперт
+      </div>
+    </>
+  );
+
   return (
-    <section id="expert" className="py-32 px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="expert" className="py-32 px-6 md:px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+
+        {/* Mobile-only header — appears before photo on mobile */}
+        <div className="lg:hidden order-1">
+          <Header />
+        </div>
+
+        {/* Photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative max-w-xs mx-auto lg:mx-0"
+          className="relative w-full lg:max-w-xs mx-auto lg:mx-0 order-2 lg:order-1"
         >
           <div className="absolute -inset-8 bg-brand-gold/10 rounded-full blur-[80px] -z-10" />
           <div className="relative aspect-[3/4] overflow-hidden rounded-[32px] glass border-brand-green/10 dark:border-white/5 shadow-xl">
@@ -39,24 +58,24 @@ export default function Expert() {
           </div>
         </motion.div>
 
+        {/* Text content */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="order-3 lg:order-2"
         >
-          <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-gold mb-6">Об эксперте</div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-brand-green-dark dark:text-white leading-tight">
-            Айнур Рысмаганбетова
-          </h2>
-          <div className="text-brand-gold font-bold text-sm uppercase tracking-widest mb-8">
-            Профессиональный бухгалтер · Финансовый коуч · Налоговый эксперт
+          {/* Desktop-only header inside right column */}
+          <div className="hidden lg:block">
+            <Header />
           </div>
+
           <p className="text-lg opacity-80 mb-10 leading-relaxed text-gray-500 dark:text-gray-400 font-medium text-justify">
             Более 20 лет практики в бухгалтерском учёте, налогообложении и финансовом консалтинге. Работаю с предпринимателями и частными лицами - от разовых консультаций до долгосрочного сопровождения. Моя цель - не просто дать ответ, а научить клиента понимать свои финансы.
           </p>
 
-          <div className="space-y-6 mb-10">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] opacity-40 mb-6 text-brand-green-dark dark:text-white">Сертификаты и регалии</h3>
+          <div className="space-y-6 mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.3em] opacity-40 mb-6 text-brand-green-dark dark:text-white">Сертификаты</h3>
             {certs.map((cert) => (
               <div key={cert} className="flex items-center gap-5 group">
                 <div className="w-8 h-8 rounded-xl bg-brand-green/10 dark:bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-brand-gold/20 transition-all border border-brand-green/5 dark:border-white/10">
@@ -67,6 +86,15 @@ export default function Expert() {
             ))}
           </div>
 
+          <a
+            href="https://finguide.kz/images/sertificates.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-brand-gold hover:text-brand-gold-dark transition-colors mb-10 border border-brand-gold/30 rounded-xl px-5 py-2.5 hover:bg-brand-gold/5"
+          >
+            Посмотреть все сертификаты →
+          </a>
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {stats.map((stat, i) => (
               <div key={i} className="glass p-8 rounded-[32px] text-center flex flex-col items-center group border-brand-green/5 dark:border-white/5">
@@ -76,6 +104,7 @@ export default function Expert() {
             ))}
           </div>
         </motion.div>
+
       </div>
     </section>
   );

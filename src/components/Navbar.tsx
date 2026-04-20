@@ -103,6 +103,15 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
+          <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/40 md:hidden z-[-1]"
+          />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -126,6 +135,7 @@ export default function Navbar() {
               Записаться
             </button>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
