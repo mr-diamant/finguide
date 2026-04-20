@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/5 dark:bg-brand-green/20 rounded-full blur-[120px] -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-gold/5 dark:bg-brand-gold/15 rounded-full blur-[100px] -ml-64 -mb-64" />
 
-      <div className="max-w-4xl mx-auto px-6 w-full text-center relative z-10">
+      <div className="max-w-6xl mx-auto px-6 w-full text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,16 +33,16 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-8xl font-black text-brand-green-dark dark:text-white leading-[1.05] tracking-tight mb-8"
+          className="text-5xl md:text-6xl font-black text-brand-green-dark dark:text-white leading-[1.05] tracking-tight mb-8"
         >
-          Наведем идеальный порядок в финансах и налогах
+          Наведем <span className="accent-gradient">идеальный порядок</span><br />в финансах и налогах
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-medium"
+          className="text-lg md:text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed font-medium"
         >
           Оказываем помощь предпринимателям, бухгалтерам и стартаперам навести порядок в учёте, оптимизировать налоги и выстроить финансовую грамотность один раз и надолго.
         </motion.p>
@@ -53,13 +53,30 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="flex flex-wrap gap-5 justify-center"
         >
-          <button 
+          <div
             onClick={() => openModal('Консультация', 'Оставьте заявку, и мы свяжемся с вами в ближайшее время')}
-            className="bg-brand-green hover:bg-brand-green-dark text-white px-12 py-6 rounded-2xl font-bold transition-all shadow-xl shadow-brand-green/20 flex items-center gap-3 group active:scale-95 text-lg"
+            className="group cursor-pointer active:scale-95 transition-transform"
+            style={{
+              background: 'linear-gradient(135deg, #f5e08a 0%, #c9a84c 25%, #7a5c1e 50%, #c9a84c 75%, #f5e08a 100%)',
+              borderRadius: '9999px',
+              padding: '6px',
+              boxShadow: '0 4px 24px rgba(201,168,76,0.35)',
+            }}
           >
-            Записаться на консультацию
-            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+            <div
+              style={{
+                background: '#1e3d2c',
+                borderRadius: '9999px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '18px 48px',
+              }}
+              className="text-white font-bold text-lg"
+            >
+              Записаться на консультацию
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

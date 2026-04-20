@@ -23,21 +23,21 @@ export default function Game() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl relative z-10"
           >
-            <div className="w-40 h-40 md:w-[480px] md:h-[480px] flex items-center justify-center mx-auto mb-10">
-              <img 
-                src="https://finguide.kz/images/game.webp" 
-                alt="Game Icon" 
-                className="w-full h-full object-contain mix-blend-multiply dark:rounded-[10px] dark:p-4"
+            <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-gold mb-6">Трансформационная игра</div>
+
+            <h2 className="text-4xl md:text-5xl font-black mb-10 tracking-tight text-brand-green-dark dark:text-white leading-tight">
+              Авторская игра <br />
+              <span className="accent-gradient italic text-brand-gold">Финансовая свобода</span>
+            </h2>
+
+            <div className="w-[calc(100%+6rem)] -mx-12 md:mx-auto md:w-[480px] md:h-[480px] flex items-center justify-center mb-10">
+              <img
+                src="https://finguide.kz/images/game.webp"
+                alt="Game Icon"
+                className="w-full h-auto object-contain mix-blend-multiply dark:rounded-[10px] dark:p-4"
                 referrerPolicy="no-referrer"
               />
             </div>
-            
-            <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-gold mb-6">Трансформационная игра</div>
-            
-            <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tight text-brand-green-dark dark:text-white leading-tight">
-              Авторская игра <br /> 
-              <span className="accent-gradient italic text-brand-gold">Финансовая свобода</span>
-            </h2>
             
             <p className="text-lg text-gray-500 dark:text-gray-400 mb-12 leading-relaxed font-medium">
               Уникальный инструмент для групповой и корпоративной работы. Игра меняет отношение к деньгам через живое взаимодействие, а не лекцию.
@@ -60,7 +60,7 @@ export default function Game() {
 
               <div className="glass p-8 rounded-[32px] border-brand-green/5 dark:border-white/5 bg-white/50 dark:bg-white/5">
                 <h3 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-3">
-                  <Brain size={16} /> Что участники уносят с собой
+                  <Brain size={16} /> Что вы получите
                 </h3>
                 <p className="text-brand-green-dark dark:text-white font-bold text-sm leading-relaxed mb-6">
                   Новое мышление о деньгах, конкретные инструменты личного бюджета, понимание как деньги работают в бизнесе.
@@ -75,7 +75,7 @@ export default function Game() {
               onClick={() => openModal('Трансформационная игра', 'Проведите уникальное мероприятие для вашей команды. Оставьте заявку, и мы обсудим детали проведения.')}
               className="bg-brand-green hover:bg-brand-green-dark text-white px-12 py-6 rounded-2xl font-bold transition-all shadow-2xl shadow-brand-green/20 active:scale-95 text-lg"
             >
-              Заказать игру для вашей команды
+              Записаться на игру
             </button>
           </motion.div>
         </div>

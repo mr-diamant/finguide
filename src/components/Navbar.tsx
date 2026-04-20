@@ -15,12 +15,15 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   const desktopLinks = [
     { name: 'Услуги', href: '#services' },
@@ -32,16 +35,14 @@ export default function Navbar() {
   ];
 
   const mobileLinks = [
-    { name: 'Главный экран', href: '#hero' },
-    { name: 'Боль / Проблема', href: '#problem' },
-    { name: 'Решение / Услуги', href: '#services' },
+    { name: 'Услуги', href: '#services' },
     { name: 'Об эксперте', href: '#expert' },
-    { name: 'Как работаю', href: '#process' },
+    { name: 'Как работаем', href: '#process' },
     { name: 'Результаты', href: '#results' },
-    { name: 'Трансформационная игра', href: '#game' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'Игра', href: '#game' },
+    { name: 'Частые вопросы', href: '#faq' },
     { name: 'Отзывы', href: '#testimonials' },
-    { name: 'Финальный CTA', href: '#contact' },
+    { name: 'Контакты', href: '#contact' },
   ];
 
   return (
@@ -56,10 +57,11 @@ export default function Navbar() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <img 
-            src="https://finguide.kz/page/brandbook/menu_logo.png" 
-            alt="FinGuide Logo" 
+          <img
+            src="https://finguide.kz/page/brandbook/menu_logo.png"
+            alt="FinGuide Logo"
             className="h-10 md:h-12 w-auto object-contain transition-all duration-500"
             referrerPolicy="no-referrer"
           />
@@ -105,7 +107,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-4 right-4 glass mt-4 p-8 flex flex-col gap-5 md:hidden rounded-[32px] border-brand-green/10 dark:border-white/5 max-h-[80vh] overflow-y-auto"
+            className="absolute top-full left-4 right-4 mt-4 p-8 flex flex-col gap-5 md:hidden rounded-[32px] max-h-[80vh] overflow-y-auto bg-white dark:bg-brand-deep-dark border border-brand-green/10 dark:border-white/10 shadow-2xl"
           >
             {mobileLinks.map((link) => (
               <a

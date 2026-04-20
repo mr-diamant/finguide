@@ -9,33 +9,33 @@ export default function Expert() {
   ];
 
   const certs = [
-    'CAP - Certified Accounting Practitioner', 
-    'CIPA - Certified International Professional Accountant', 
-    'ICU - Профессиональный коуч, Международная ассоциация', 
+    'CAP - Certified Accounting Practitioner',
+    'CIPA - Certified International Professional Accountant',
+    'ICU - Профессиональный коуч, Международная ассоциация',
     'ПБ - Сертификат Профессионального Бухгалтера'
   ];
 
   return (
     <section id="expert" className="py-32 px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative"
+          className="relative max-w-xs mx-auto lg:mx-0"
         >
-          <div className="absolute -inset-10 bg-brand-gold/10 rounded-full blur-[100px] -z-10" />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[40px] glass border-brand-green/10 dark:border-white/5 shadow-2xl">
-            <img 
-              src="https://finguide.kz/page/brandbook/ainur.jpg" 
-              alt="Айнур Рысмаганбетова" 
+          <div className="absolute -inset-8 bg-brand-gold/10 rounded-full blur-[80px] -z-10" />
+          <div className="relative aspect-[3/4] overflow-hidden rounded-[32px] glass border-brand-green/10 dark:border-white/5 shadow-xl">
+            <img
+              src="https://finguide.kz/page/brandbook/ainur.jpg"
+              alt="Айнур Рысмаганбетова"
               className="w-full h-full object-cover transition-opacity dark:opacity-80"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-10 -right-8 glass p-8 rounded-[32px] shadow-2xl hidden md:block border-brand-gold/30 dark:border-brand-gold/20">
-            <h4 className="text-xl font-bold leading-none text-brand-green-dark dark:text-white">Айнур Рысмаганбетова</h4>
-            <p className="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-3">Профессиональный бухгалтер</p>
+          <div className="absolute -bottom-8 -right-6 glass p-5 rounded-[24px] shadow-xl hidden md:block border-brand-gold/30 dark:border-brand-gold/20">
+            <h4 className="text-base font-bold leading-none text-brand-green-dark dark:text-white">Айнур Рысмаганбетова</h4>
+            <p className="text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-2">Профессиональный бухгалтер</p>
           </div>
         </motion.div>
 
@@ -55,16 +55,7 @@ export default function Expert() {
             Более 20 лет практики в бухгалтерском учёте, налогообложении и финансовом консалтинге. Работаю с предпринимателями и частными лицами - от разовых консультаций до долгосрочного сопровождения. Моя цель - не просто дать ответ, а научить клиента понимать свои финансы.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-            {stats.map((stat, i) => (
-              <div key={i} className="glass p-8 rounded-[32px] text-center flex flex-col items-center group border-brand-green/5 dark:border-white/5">
-                <div className="text-3xl font-black accent-gradient leading-none mb-2">{stat.value}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-tight text-gray-500 dark:text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-6">
+          <div className="space-y-6 mb-10">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] opacity-40 mb-6 text-brand-green-dark dark:text-white">Сертификаты и регалии</h3>
             {certs.map((cert) => (
               <div key={cert} className="flex items-center gap-5 group">
@@ -72,6 +63,15 @@ export default function Expert() {
                   <CheckCircle2 size={16} className="text-brand-green dark:text-brand-gold" />
                 </div>
                 <span className="text-sm font-bold opacity-70 group-hover:opacity-100 transition-opacity text-brand-green-dark/80 dark:text-white/80">{cert}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {stats.map((stat, i) => (
+              <div key={i} className="glass p-8 rounded-[32px] text-center flex flex-col items-center group border-brand-green/5 dark:border-white/5">
+                <div className="text-3xl font-black accent-gradient leading-none mb-2">{stat.value}</div>
+                <div className="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-tight text-gray-500 dark:text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>

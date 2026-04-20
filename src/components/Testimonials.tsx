@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { Quote, Star } from 'lucide-react';
+import { useState } from 'react';
+import ReviewModal from './ReviewModal';
 
 const testimonials = [
   {
@@ -35,6 +37,8 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [reviewOpen, setReviewOpen] = useState(false);
+
   return (
     <section id="testimonials" className="py-32 px-6 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
       {/* Decorative Blur */}
@@ -99,7 +103,22 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="flex justify-center mt-14"
+        >
+          <button
+            onClick={() => setReviewOpen(true)}
+            className="bg-brand-green hover:bg-brand-green-dark text-white px-12 py-5 rounded-2xl font-bold transition-all shadow-xl shadow-brand-green/20 active:scale-95 text-lg"
+          >
+            Оставить отзыв
+          </button>
+        </motion.div>
       </div>
+
+      <ReviewModal isOpen={reviewOpen} onClose={() => setReviewOpen(false)} />
     </section>
   );
 }

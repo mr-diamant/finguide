@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
@@ -45,7 +45,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
+    <section id="faq" className="py-24 px-4 md:px-10 relative overflow-hidden bg-white dark:bg-brand-deep-dark transition-colors duration-500">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="w-40 h-40 flex items-center justify-center mx-auto mb-6 transform hover:scale-110 transition-transform duration-500">
@@ -65,11 +65,15 @@ export default function FAQ() {
             <div key={i} className="glass rounded-[32px] overflow-hidden border border-brand-green/5 dark:border-white/5 transition-all duration-300 hover:bg-white/90 dark:hover:bg-zinc-900/50">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-8 text-left transition-colors group"
+                className="w-full flex items-center justify-between p-5 md:p-8 text-left transition-colors group"
               >
                 <span className="text-lg font-bold pr-8 transition-colors group-hover:text-brand-green dark:group-hover:text-brand-gold">{faq.q}</span>
-                <div className="w-10 h-10 rounded-2xl bg-brand-green/5 dark:bg-white/5 flex items-center justify-center shrink-0 border border-brand-green/10 dark:border-white/10">
-                  {openIndex === i ? <Minus size={20} className="text-brand-green dark:text-brand-gold" /> : <Plus size={20} className="text-brand-green dark:text-brand-gold" />}
+                <div className="w-10 h-10 rounded-2xl bg-brand-gold flex items-center justify-center shrink-0 shadow-sm">
+                  <ChevronDown
+                    size={20}
+                    className="text-brand-green-dark transition-transform duration-300"
+                    style={{ transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  />
                 </div>
               </button>
               <AnimatePresence>
@@ -79,7 +83,7 @@ export default function FAQ() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                   >
-                    <div className="p-8 pt-0 opacity-80 leading-relaxed text-sm text-gray-600 dark:text-gray-400 font-medium">
+                    <div className="p-5 pt-0 md:p-8 md:pt-0 opacity-80 leading-relaxed text-sm text-gray-600 dark:text-gray-400 font-medium">
                       {faq.a}
                     </div>
                   </motion.div>

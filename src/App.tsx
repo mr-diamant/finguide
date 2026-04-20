@@ -10,9 +10,11 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import ContactModal from './components/ContactModal';
+import LegalModal from './components/LegalModal';
 import { ModalProvider, useModal } from './context/ModalContext';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { Sun, Moon } from 'lucide-react';
+import WhatsAppButton from './components/WhatsAppButton';
 import { useState, useEffect } from 'react';
 
 function AppContent() {
@@ -28,10 +30,12 @@ function AppContent() {
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
-      return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return saved ? saved === 'dark' : true;
     }
     return false;
   });
+
+  const [legalModal, setLegalModal] = useState<'privacy' | 'offer' | null>(null);
 
   useEffect(() => {
     if (darkMode) {
@@ -52,9 +56,9 @@ function AppContent() {
         className="fixed top-0 left-0 right-0 h-1 bg-brand-gold z-100 origin-left shadow-[0_0_15px_rgba(201,168,76,0.5)]"
         style={{ scaleX }}
       />
-      
+
       <Navbar />
-      
+
       <main>
         <Hero />
         <Problem />
@@ -102,16 +106,16 @@ function AppContent() {
 
         <FAQ />
         <Testimonials />
-        
+
         <Contact />
       </main>
 
       <footer className="py-12 px-10 border-t border-brand-green/10 dark:border-white/5 bg-white dark:bg-brand-deep-dark transition-colors duration-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-brand-green-dark/40 dark:text-white/40 text-[10px] font-bold uppercase tracking-widest">
           <div className="flex items-center gap-4">
-            <img 
-              src="https://finguide.kz/page/brandbook/menu_logo.png" 
-              alt="FinGuide Logo" 
+            <img
+              src="https://finguide.kz/page/brandbook/menu_logo.png"
+              alt="FinGuide Logo"
               className="h-8 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
               referrerPolicy="no-referrer"
             />
@@ -119,13 +123,23 @@ function AppContent() {
           </div>
           <div className="flex items-center gap-10">
             <a href="#services" className="hover:text-brand-gold transition-colors">Услуги</a>
-            <a href="#" className="hover:text-brand-gold transition-colors">Политика</a>
-            <a href="#" className="hover:text-brand-gold transition-colors">Оферта</a>
-            
+            <button
+              onClick={() => setLegalModal('privacy')}
+              className="hover:text-brand-gold transition-colors cursor-pointer uppercase tracking-widest font-bold text-[10px]"
+            >
+              Политика
+            </button>
+            <button
+              onClick={() => setLegalModal('offer')}
+              className="hover:text-brand-gold transition-colors cursor-pointer uppercase tracking-widest font-bold text-[10px]"
+            >
+              Оферта
+            </button>
+
             {/* iPhone style Theme Toggle */}
             <div className="flex items-center gap-3 ml-4 py-1 px-1.5 bg-brand-green/5 dark:bg-white/5 rounded-full border border-brand-green/10 dark:border-white/10">
               <Sun size={12} className={darkMode ? "text-gray-400" : "text-brand-gold"} />
-              <button 
+              <button
                 className="relative w-10 h-5 bg-brand-green/20 dark:bg-white/10 rounded-full transition-colors duration-300 focus:outline-none"
                 onClick={toggleTheme}
               >
@@ -138,12 +152,18 @@ function AppContent() {
       </footer>
 
       {/* Global Contact Modal */}
-      <ContactModal 
-        isOpen={isOpen} 
-        onClose={closeModal} 
-        title={content.title} 
-        description={content.description} 
+      <ContactModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        title={content.title}
+        description={content.description}
       />
+
+      {/* Legal Modals */}
+      <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
+
+      {/* WhatsApp Float Button */}
+      <WhatsAppButton />
     </div>
   );
 }
