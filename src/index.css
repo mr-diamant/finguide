@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -56,6 +55,28 @@
 
 * {
   scroll-behavior: smooth;
+}
+
+@keyframes heroSlideUp {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+.hero-item {
+  animation: heroSlideUp 0.55s ease forwards;
+}
+.hero-item-1 { animation-delay: 0s; }
+.hero-item-2 { animation-delay: 0.08s; }
+.hero-item-3 { animation-delay: 0.16s; }
+.hero-item-4 { animation-delay: 0.24s; }
+
+.card-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.card-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .legal-content h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-brand-green-dark); }

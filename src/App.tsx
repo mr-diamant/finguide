@@ -12,6 +12,7 @@ import Testimonials from './components/Testimonials';
 import ContactModal from './components/ContactModal';
 import LegalModal from './components/LegalModal';
 import { ModalProvider, useModal } from './context/ModalContext';
+import { LanguageProvider, useLang } from './context/LanguageContext';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { Sun, Moon } from 'lucide-react';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -19,6 +20,7 @@ import CookieBanner from './components/CookieBanner';
 import { useState, useEffect } from 'react';
 
 function AppContent() {
+  const { t } = useLang();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -74,9 +76,9 @@ function AppContent() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="text-brand-gold text-sm font-bold uppercase tracking-widest mb-6">Наша миссия</div>
+              <div className="text-brand-gold text-sm font-bold uppercase tracking-widest mb-6">{t.mission.label}</div>
               <blockquote className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-brand-green-dark dark:text-white">
-                «Помочь каждому клиенту обрести <span className="accent-gradient italic">финансовую уверенность</span> — через знания, поддержку и практические инструменты.»
+                {t.mission.quote1}<span className="accent-gradient italic">{t.mission.quoteAccent}</span>{t.mission.quote2}
               </blockquote>
             </motion.div>
           </div>
@@ -92,9 +94,9 @@ function AppContent() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="text-brand-gold text-sm font-bold uppercase tracking-widest mb-6">Наша стратегия</div>
+              <div className="text-brand-gold text-sm font-bold uppercase tracking-widest mb-6">{t.strategy.label}</div>
               <blockquote className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-brand-green-dark dark:text-white">
-                «Мы не останавливаемся на полпути. Пока у клиента есть задача — <span className="accent-gradient italic">мы рядом</span>. До результата, до уверенности, до финансовой свободы.»
+                {t.strategy.quote1}<span className="accent-gradient italic">{t.strategy.quoteAccent}</span>{t.strategy.quote2}
               </blockquote>
             </motion.div>
           </div>
@@ -120,21 +122,21 @@ function AppContent() {
               className="h-8 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
               referrerPolicy="no-referrer"
             />
-            <span>FinGuide Expert &copy; 2026. Актобе · Казахстан</span>
+            <span>{t.footer.copyright}</span>
           </div>
           <div className="flex items-center gap-10">
-            <a href="#services" className="hover:text-brand-gold transition-colors">Услуги</a>
+            <a href="#services" className="hover:text-brand-gold transition-colors">{t.footer.services}</a>
             <button
               onClick={() => setLegalModal('privacy')}
               className="hover:text-brand-gold transition-colors cursor-pointer uppercase tracking-widest font-bold text-[10px]"
             >
-              Политика
+              {t.footer.privacy}
             </button>
             <button
               onClick={() => setLegalModal('offer')}
               className="hover:text-brand-gold transition-colors cursor-pointer uppercase tracking-widest font-bold text-[10px]"
             >
-              Оферта
+              {t.footer.offer}
             </button>
 
             {/* iPhone style Theme Toggle */}
@@ -174,8 +176,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ModalProvider>
-      <AppContent />
-    </ModalProvider>
+    <LanguageProvider>
+      <ModalProvider>
+        <AppContent />
+      </ModalProvider>
+    </LanguageProvider>
   );
 }

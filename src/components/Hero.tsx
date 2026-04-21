@@ -1,10 +1,9 @@
-import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, TrendingUp, HelpCircle } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
 import { useModal } from '../context/ModalContext';
+import { useLang } from '../context/LanguageContext';
 
 export default function Hero() {
   const { openModal } = useModal();
+  const { t } = useLang();
 
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-off-white dark:bg-linear-to-br dark:from-brand-deep-dark dark:via-brand-green-dark dark:to-brand-green transition-colors duration-500">
@@ -23,11 +22,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 w-full text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-green/5 dark:bg-white/5 rounded-full mb-8 border border-brand-green/10 dark:border-white/10"
-        >
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-green/5 dark:bg-white/5 rounded-full mb-8 border border-brand-green/10 dark:border-white/10">
           <img
             src="https://finguide.kz/icon.svg"
             alt="Icon"
@@ -35,43 +30,29 @@ export default function Hero() {
             referrerPolicy="no-referrer"
           />
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-green-dark/60 dark:text-white/40">
-            Финансовый эксперт · Актобе · Казахстан
+            {t.hero.badge}
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-6xl font-black text-brand-green-dark dark:text-white leading-[1.05] tracking-tight mb-8"
-        >
-          Наведем <span className="accent-gradient">идеальный порядок</span><br />в финансах и налогах
-        </motion.h1>
+        <h1 className="text-5xl md:text-6xl font-black text-brand-green-dark dark:text-white leading-[1.05] tracking-tight mb-8">
+          {t.hero.title1} <span className="accent-gradient">{t.hero.titleAccent}</span>
+          {t.hero.title2 && <><br />{t.hero.title2}</>}
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed font-medium"
-        >
-          Оказываем помощь предпринимателям, бухгалтерам и стартаперам навести порядок в учёте, оптимизировать налоги и выстроить финансовую грамотность один раз и надолго.
-        </motion.p>
+        <p className="text-sm md:text-lg text-brand-green-dark dark:text-white mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+          {t.hero.subtitle}
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-5 justify-center"
-        >
+        <div className="flex flex-wrap gap-5 justify-center">
           <div
-            onClick={() => openModal('Консультация', 'Оставьте заявку, и мы свяжемся с вами в ближайшее время')}
+            onClick={() => openModal(t.hero.modalTitle, t.hero.modalDesc)}
             className="group cursor-pointer active:scale-95 transition-transform rounded-full p-1.5 bg-[linear-gradient(135deg,#f5e08a_0%,#c9a84c_25%,#7a5c1e_50%,#c9a84c_75%,#f5e08a_100%)] shadow-[0_4px_24px_rgba(201,168,76,0.35)]"
           >
-            <div className="bg-[#1e3d2c] rounded-full flex items-center gap-3 py-[18px] px-12 text-white font-bold text-lg">
-              Записаться на консультацию
+            <div className="bg-[#1e3d2c] rounded-full flex items-center gap-3 py-[18px] px-8 md:px-12 text-white font-bold text-base md:text-lg whitespace-nowrap">
+              {t.hero.cta}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

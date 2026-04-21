@@ -1,20 +1,19 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/src/lib/utils';
 import { useModal } from '../context/ModalContext';
-
-const LANGS = ['RU', 'KZ', 'EN'] as const;
-type Lang = typeof LANGS[number];
+import { useLang } from '../context/LanguageContext';
+import { LANGS } from '../i18n';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lang, setLang] = useState<Lang>('RU');
   const { openModal } = useModal();
+  const { lang, setLang, t } = useLang();
 
   const handleConsultationClick = () => {
-    openModal('Консультация', 'Оставьте заявку, и мы свяжемся с вами в ближайшее время');
+    openModal(t.hero.modalTitle, t.hero.modalDesc);
     setIsOpen(false);
   };
 
@@ -30,23 +29,23 @@ export default function Navbar() {
   }, [isOpen]);
 
   const desktopLinks = [
-    { name: 'Услуги', href: '#services' },
-    { name: 'Об эксперте', href: '#expert' },
-    { name: 'Результаты', href: '#results' },
-    { name: 'Игра', href: '#game' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Контакты', href: '#contact' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.expert, href: '#expert' },
+    { name: t.nav.results, href: '#results' },
+    { name: t.nav.game, href: '#game' },
+    { name: t.nav.faq, href: '#faq' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const mobileLinks = [
-    { name: 'Услуги', href: '#services' },
-    { name: 'Об эксперте', href: '#expert' },
-    { name: 'Как работаем', href: '#process' },
-    { name: 'Результаты', href: '#results' },
-    { name: 'Игра', href: '#game' },
-    { name: 'Частые вопросы', href: '#faq' },
-    { name: 'Отзывы', href: '#testimonials' },
-    { name: 'Контакты', href: '#contact' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.expert, href: '#expert' },
+    { name: t.nav.process, href: '#process' },
+    { name: t.nav.results, href: '#results' },
+    { name: t.nav.game, href: '#game' },
+    { name: t.nav.faq, href: '#faq' },
+    { name: t.nav.testimonials, href: '#testimonials' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   return (
@@ -70,13 +69,13 @@ export default function Navbar() {
             referrerPolicy="no-referrer"
           />
         </motion.div>
-        
+
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-brand-green-dark/60 dark:text-white/40">
             {desktopLinks.map((link, i) => (
               <motion.a
-                key={link.name}
+                key={link.href}
                 href={link.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -94,7 +93,7 @@ export default function Navbar() {
             onClick={handleConsultationClick}
             className="bg-brand-green hover:bg-brand-green-dark text-white text-[11px] font-bold uppercase tracking-widest px-8 py-3 rounded-xl shadow-lg shadow-brand-green/10 transition-all active:scale-95"
           >
-            Консультация
+            {t.nav.consultation}
           </motion.button>
 
           {/* Desktop lang switcher */}
@@ -144,37 +143,36 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/40 md:hidden z-[-1]"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 p-8 flex flex-col gap-5 md:hidden rounded-[32px] max-h-[80vh] overflow-y-auto bg-white dark:bg-brand-deep-dark border border-brand-green/10 dark:border-white/10 shadow-2xl"
-          >
-            {mobileLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-bold text-brand-green-dark dark:text-white border-b border-brand-green/5 dark:border-white/5 pb-3 hover:text-brand-gold transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-            <button 
-              onClick={handleConsultationClick}
-              className="bg-brand-green text-white w-full py-4 rounded-xl font-bold transition-all active:scale-95 mt-2"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/40 md:hidden z-[-1]"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-4 right-4 mt-4 p-8 flex flex-col gap-5 md:hidden rounded-[32px] max-h-[80vh] overflow-y-auto bg-white dark:bg-brand-deep-dark border border-brand-green/10 dark:border-white/10 shadow-2xl"
             >
-              Записаться
-            </button>
-          </motion.div>
+              {mobileLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-bold text-brand-green-dark dark:text-white border-b border-brand-green/5 dark:border-white/5 pb-3 hover:text-brand-gold transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <button
+                onClick={handleConsultationClick}
+                className="bg-brand-green text-white w-full py-4 rounded-xl font-bold transition-all active:scale-95 mt-2"
+              >
+                {t.nav.register}
+              </button>
+            </motion.div>
           </>
         )}
       </AnimatePresence>

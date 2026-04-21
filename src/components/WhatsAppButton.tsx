@@ -4,6 +4,7 @@ import { ArrowUp } from 'lucide-react';
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -11,9 +12,20 @@ export default function WhatsAppButton() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <AnimatePresence>
-      {visible && (
+      {visible && !footerVisible && (
         <div className="fixed bottom-8 right-6 z-50 flex flex-col items-center gap-3">
           {/* Scroll to top */}
           <motion.button
@@ -31,7 +43,9 @@ export default function WhatsAppButton() {
 
           {/* WhatsApp */}
           <motion.a
-            href="#"
+            href="https://wa.me/77712251020"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
