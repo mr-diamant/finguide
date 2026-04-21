@@ -37,8 +37,7 @@ export default function WhatsAppButton() {
             exit={{ opacity: 0, scale: 0.5 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="w-14 h-14 rounded-full shadow-2xl flex items-center justify-center"
-            style={{ background: '#25D366', boxShadow: '0 4px 24px rgba(37,211,102,0.4)' }}
+            className="w-14 h-14 rounded-full bg-[#25D366] shadow-[0_4px_24px_rgba(37,211,102,0.4)] flex items-center justify-center"
             aria-label="WhatsApp"
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white">

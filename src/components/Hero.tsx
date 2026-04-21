@@ -17,8 +17,7 @@ export default function Hero() {
         <img
           src="https://finguide.kz/icon.svg"
           alt=""
-          className="w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] object-contain opacity-[0.15] dark:opacity-[0.09]"
-          style={{ filter: 'brightness(0) saturate(0) invert(30%) sepia(20%) saturate(500%) hue-rotate(100deg)' }}
+          className="w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] object-contain opacity-20 dark:opacity-[0.12]"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -66,25 +65,9 @@ export default function Hero() {
         >
           <div
             onClick={() => openModal('Консультация', 'Оставьте заявку, и мы свяжемся с вами в ближайшее время')}
-            className="group cursor-pointer active:scale-95 transition-transform"
-            style={{
-              background: 'linear-gradient(135deg, #f5e08a 0%, #c9a84c 25%, #7a5c1e 50%, #c9a84c 75%, #f5e08a 100%)',
-              borderRadius: '9999px',
-              padding: '6px',
-              boxShadow: '0 4px 24px rgba(201,168,76,0.35)',
-            }}
+            className="group cursor-pointer active:scale-95 transition-transform rounded-full p-1.5 bg-[linear-gradient(135deg,#f5e08a_0%,#c9a84c_25%,#7a5c1e_50%,#c9a84c_75%,#f5e08a_100%)] shadow-[0_4px_24px_rgba(201,168,76,0.35)]"
           >
-            <div
-              style={{
-                background: '#1e3d2c',
-                borderRadius: '9999px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                padding: '18px 48px',
-              }}
-              className="text-white font-bold text-lg"
-            >
+            <div className="bg-[#1e3d2c] rounded-full flex items-center gap-3 py-[18px] px-12 text-white font-bold text-lg">
               Записаться на консультацию
             </div>
           </div>

@@ -71,8 +71,7 @@ export default function FAQ() {
                 <div className="w-10 h-10 rounded-2xl bg-brand-gold flex items-center justify-center shrink-0 shadow-sm">
                   <ChevronDown
                     size={20}
-                    className="text-brand-green-dark transition-transform duration-300"
-                    style={{ transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    className={`text-brand-green-dark transition-transform duration-300 ${openIndex === i ? 'rotate-180' : 'rotate-0'}`}
                   />
                 </div>
               </button>

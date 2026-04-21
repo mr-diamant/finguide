@@ -15,6 +15,7 @@ import { ModalProvider, useModal } from './context/ModalContext';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { Sun, Moon } from 'lucide-react';
 import WhatsAppButton from './components/WhatsAppButton';
+import CookieBanner from './components/CookieBanner';
 import { useState, useEffect } from 'react';
 
 function AppContent() {
@@ -164,6 +165,9 @@ function AppContent() {
 
       {/* WhatsApp Float Button */}
       <WhatsAppButton />
+
+      {/* Cookie Consent */}
+      <CookieBanner />
     </div>
   );
 }
